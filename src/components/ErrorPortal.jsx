@@ -25,9 +25,15 @@ const ErrorPortal = ({ error, isOpen, onClose }) => {
 
     return createPortal(
         <div className="error-portal-overlay" onClick={onClose}>
-            <div className="error-portal-content" onClick={(e) => e.stopPropagation()}>
+            <div 
+                className="error-portal-content" 
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-labelledby="error-title"
+                aria-describedby="error-message"
+            >
                 <div className="error-portal-header">
-                    <h2>⚠️ API Error</h2>
+                    <h2 id="error-title">⚠️ API Error</h2>
                     <button className="error-close-btn" onClick={onClose}>×</button>
                 </div>
                 
@@ -47,7 +53,7 @@ const ErrorPortal = ({ error, isOpen, onClose }) => {
                         <div className="error-item">
                             <strong>Error Message:</strong>
                         </div>
-                        <div className="error-message">
+                        <div className="error-message" id="error-message">
                             {error.message || 'An unexpected error occurred while fetching data from GitHub API.'}
                         </div>
                         

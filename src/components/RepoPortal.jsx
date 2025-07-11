@@ -24,14 +24,20 @@ const RepoPortal = ({ repo, isOpen, onClose }) => {
 
     return createPortal(
         <div className="portal-overlay" onClick={onClose}>
-            <div className="portal-content" onClick={(e) => e.stopPropagation()}>
+            <div 
+                className="portal-content" 
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-labelledby="repo-title"
+                aria-describedby="repo-description"
+            >
                 <div className="portal-header">
-                    <h2>{repo.name}</h2>
+                    <h2 id="repo-title">{repo.name}</h2>
                     <button className="close-btn" onClick={onClose}>×</button>
                 </div>
                 
                 <div className="portal-body">
-                    <p className="repo-description">{repo.description || 'No description available'}</p>
+                    <p className="repo-description" id="repo-description">{repo.description || 'No description available'}</p>
                     
                     <div className="repo-details">
                         <div className="detail-item">
